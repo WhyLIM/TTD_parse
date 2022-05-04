@@ -7,7 +7,7 @@
 
 - Target_Drug.R is used to obtain all the mapping relationship of all drugs and targets information in Therapeutic Target Database (TTD) from files downloaded in TTD and UniprotKB.
 - TTD_TDI.R is used to process the mapping relationship of Targets_Indications and Drugs_Indications, and finally obtain target_drug_indication form of TTD.
-- The required filess can be obtained from the following URLs:
+- The required files can be obtained from the following URLs:
   - http://db.idrblab.net/web/full-data-download
   - https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/by_organism/
   - (Optional) https://ftp.ncbi.nlm.nih.gov/pubchem/Compound/CURRENT-Full/XML/
