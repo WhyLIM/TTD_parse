@@ -100,26 +100,25 @@ uni_targetid_row <- which(uniid[, 2] == "TARGETID")
 uni_uniproid_row <- which(uniid[, 2] == "UNIPROID")
 # Since targets in this file must have a corresponding id, no other processing is required.
 # Note: UniprotIDs extracted from TTD may have forms like "CUL4A_HUMAN/CUL4B_HUMAN-DDB1_HUMAN-CRBN_HUMAN", handle after merge.
-target_uni <- data.frame(TargetID = uniid[uni_targetid_row, 3], UniprotID = uniid[uni_uniproid_row, 3])
-%>% 
+target_uni <- data.frame(TargetID = uniid[uni_targetid_row, 3], UniprotID = uniid[uni_uniproid_row, 3]) %>% 
   tidyr::separate_rows(UniprotID, sep = "; ") %>% 
   tidyr::separate_rows(UniprotID, sep = "/") %>% 
   tidyr::separate_rows(UniprotID, sep = "-")
 
-test <- data.frame(UniprotID = "CUL4A_HUMAN/CUL4B_HUMAN-DDB1_HUMAN-CRBN_HUMAN", 
-                   GeneName = "CUL4A/CUL4B-DDB1-CRBN")
-test <- data.frame(UniprotID = "CUL4A_HUMAN", 
-                   GeneName = "CUL4A/CUL4B-DDB1-CRBN")
-test1 <- tidyr::separate_rows(test, UniprotID, sep = "/")
-tidyr::separate_rows(test1, UniprotID, sep = "-")
-test %>% tidyr::separate_rows(UniprotID, sep = "/") %>% 
-  tidyr::separate_rows(UniprotID, sep = "-")
-test %>% tidyr::separate_rows(c("UniprotID", "GeneName"), sep = "/") %>% 
-  tidyr::separate_rows(c("UniprotID", "GeneName"), sep = "-")
-test %>% tidyr::separate_rows(UniprotID, sep = "/") %>% 
-  tidyr::separate_rows(UniprotID, sep = "-") %>% 
-  tidyr::separate_rows(GeneName, sep = "/") %>% 
-  tidyr::separate_rows(GeneName, sep = "-")
+# test <- data.frame(UniprotID = "CUL4A_HUMAN/CUL4B_HUMAN-DDB1_HUMAN-CRBN_HUMAN", 
+#                    GeneName = "CUL4A/CUL4B-DDB1-CRBN")
+# test <- data.frame(UniprotID = "CUL4A_HUMAN", 
+#                    GeneName = "CUL4A/CUL4B-DDB1-CRBN")
+# test1 <- tidyr::separate_rows(test, UniprotID, sep = "/")
+# tidyr::separate_rows(test1, UniprotID, sep = "-")
+# test %>% tidyr::separate_rows(UniprotID, sep = "/") %>% 
+#   tidyr::separate_rows(UniprotID, sep = "-")
+# test %>% tidyr::separate_rows(c("UniprotID", "GeneName"), sep = "/") %>% 
+#   tidyr::separate_rows(c("UniprotID", "GeneName"), sep = "-")
+# test %>% tidyr::separate_rows(UniprotID, sep = "/") %>% 
+#   tidyr::separate_rows(UniprotID, sep = "-") %>% 
+#   tidyr::separate_rows(GeneName, sep = "/") %>% 
+#   tidyr::separate_rows(GeneName, sep = "-")
 
 
 # All column names
